@@ -1,0 +1,84 @@
+[
+  {
+    "asana_name": "Tadasana",
+    "alignment": [
+      "Feet together or hip-width, outer edges parallel",
+      "Lift kneecaps, engage quadriceps",
+      "Neutral pelvis, tailbone lengthening",
+      "Ribs knit, sternum broad",
+      "Ears over shoulders over hips"
+    ],
+    "mistakes": [
+      "Locked knees and hyperextension",
+      "Pelvis dumped forward (anterior tilt)",
+      "Collapsing arches"
+    ],
+    "benefits": [
+      "Improves posture and awareness",
+      "Strengthens legs and core",
+      "Foundation for standing poses"
+    ],
+    "precautions": [
+      "Low blood pressure: step feet hip-width",
+      "Dizziness: gaze steady"
+    ],
+    "quotes": [
+      { "source": "Light on Yoga", "text": "Tadasana is the foundation from which all asanas spring." }
+    ],
+    "references": ["Light on Yoga"]
+  },
+  {
+    "asana_name": "Adho Mukha Svanasana",
+    "alignment": [
+      "Hands shoulder-width, index fingers forward",
+      "Press thighs back, lengthen spine",
+      "Heels descend, but prioritize spinal length",
+      "Outer upper arms rotate down"
+    ],
+    "mistakes": [
+      "Shoulders collapsing into ears",
+      "Rounded spine",
+      "Bent elbows"
+    ],
+    "benefits": [
+      "Elongates spine and hamstrings",
+      "Strengthens shoulders and legs",
+      "Restorative inversion"
+    ],
+    "precautions": [
+      "High blood pressure: avoid holding long",
+      "Wrist issues: use wedges/blocks"
+    ],
+    "quotes": [
+      { "source": "Hatha Yoga Pradipika", "text": "Adho Mukha Svanasana purifies the nadis and calms the mind." }
+    ],
+    "references": ["Hatha Yoga Pradipika", "Light on Yoga"]
+  },
+  {
+    "asana_name": "Virabhadrasana II",
+    "alignment": [
+      "Front knee over ankle to ~90°",
+      "Back leg straight, outer edge of back foot rooted",
+      "Arms at shoulder height, palms down",
+      "Torso centered between legs"
+    ],
+    "mistakes": [
+      "Front knee collapsing inward",
+      "Leaning over front leg",
+      "Sagging arms"
+    ],
+    "benefits": [
+      "Strengthens legs and hips",
+      "Opens groins and chest",
+      "Builds stamina and focus"
+    ],
+    "precautions": [
+      "Knee injury: shorten stance",
+      "Lower back pain: keep tailbone lengthened"
+    ],
+    "quotes": [
+      { "source": "Light on Yoga", "text": "Stand firmly and extend like a warrior." }
+    ],
+    "references": ["Light on Yoga"]
+  }
+]
