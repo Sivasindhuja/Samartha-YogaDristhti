@@ -1,0 +1,72 @@
+/* Using the unique colors for a natural, earthy theme */
+
+:root {
+  /* Text and Backgrounds */
+  --color-dark-text: rgb(74, 74, 74);
+  --color-light-bg: rgb(255, 255, 255);
+  --color-reply-bg: rgb(243, 244, 246);
+  /* Accents */
+  --color-primary-accent: rgb(100, 169, 154); /* Sage/Teal Green for button */
+  --color-secondary-accent: rgb(170, 125, 104); /* Terracotta/Brown for stripe */
+  --color-border: rgb(222, 226, 230);
+}
+
+.chat-container {
+  margin-top: 32px;
+  font-family: 'sans-serif'; /* Ensure consistent font */
+}
+
+.chat-container h3 {
+  color: var(--color-dark-text);
+  margin-bottom: 12px;
+}
+
+/* Textarea Styling */
+.chat-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background-color: var(--color-light-bg);
+  color: var(--color-dark-text);
+  box-sizing: border-box;
+  resize: vertical; /* Allow vertical resizing, but limit it */
+}
+
+.chat-send-button {
+  margin-top: 12px;
+}
+
+.chat-send-button button {
+  background: var(--color-primary-accent);
+  color: var(--color-light-bg);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+/* Hover effect for the button */
+.chat-send-button button:hover:not(:disabled) {
+  background-color: rgb(63, 128, 115); /* Darker shade of green from palette */
+}
+
+.chat-send-button button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* AI Reply Box Styling */
+.chat-reply-box {
+  margin-top: 24px;
+  background: var(--color-reply-bg);
+  color: var(--color-dark-text);
+  padding: 16px;
+  white-space: pre-wrap;
+  border-radius: 8px;
+  /* Terracotta accent stripe on the left */
+  border-left: 4px solid var(--color-secondary-accent);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
