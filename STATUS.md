@@ -142,12 +142,16 @@ Also not doing: model fine-tuning, a "coach dashboard", payments, or a productio
   error text now names the host and the likely causes.
 - **`legacy/server/.env`** still points at a local MongoDB (`MONGO_URI`); its API keys are empty.
   `legacy/` is not used at runtime.
+- **Leaked key in repo history.** The previous commit `b4eb4f7` still contains `server/.env` with an
+  OpenRouter API key. It is gone from the current tree but remains retrievable from history, forks
+  and caches — **revoke that key at OpenRouter**. The Gemini key was never committed.
 
 ## 8. If work resumes, in this order
 
 1. **Version control.** `git init`, commit the current tree (`.env` is already gitignored), so future
-   changes are reversible.
-2. **Rotate the API key** if the folder was shared, zipped, or screenshotted.
+   changes are reversible. *(Done: the repo now tracks `origin/main`.)*
+2. **Rotate the API key** if the folder was shared, zipped, or screenshotted — and revoke the
+   OpenRouter key exposed in commit `b4eb4f7` (see §7).
 3. **SME sign-off** for at least one asana; resolve the three rubric conflicts in §4.1; flip
    `verified` and `status`.
 4. **Privacy review** and a paid API tier so photos are not retained for product improvement.
