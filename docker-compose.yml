@@ -1,61 +1,17 @@
-version: '3.8'
-
 services:
-  # 1. MongoDB Database
-  mongodb:
-    image: mongo:latest
-    container_name: asana-mongodb
+  app:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: asana-coach
     ports:
-      - "27017:27017"
+      - "8000:8000"
     environment:
-      # Using a simple default database name
-      MONGO_INITDB_DATABASE: asana_mvp
-    volumes:
-      - mongo_data:/data/db  # Persist data across restarts
-
-  # 2. Python Pose Analyzer API
-  analyzer:
-    build:
-      context: ./analyzer  # Location of the Dockerfile
-      dockerfile: Dockerfile
-    container_name: asana-analyzer
-    expose:
-      - "8000"
-    
-
-  # 3. Node.js Backend Server
-  server:
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-    container_name: asana-server
-    ports:
-      - "4000:4000"
-    depends_on:
-      - mongodb
-      - analyzer
-    environment:
-      # Production Configuration using internal service names:
-      PORT: 4000
-      MONGO_URI: mongodb://mongodb:27017/asana_mvp  # Internal network name
-      ANALYZER_URL: http://analyzer:8000          # Internal network name
-      UPLOAD_DIR: /app/server/uploads
-      CORS_ORIGIN: "http://localhost:80" # Allows frontend to connect locally
-      # SECRETS (Use your actual key)
-      OPENROUTER_API_KEY: YOUR_OPENROUTER_API_KEY_HERE
-    volumes:
-      - ./server/uploads:/app/server/uploads # Map volume for local file persistence (optional for prod)
-      
-  # 4. React Frontend Web App
-  web:
-    build:
-      context: ./web
-      dockerfile: Dockerfile
-    container_name: asana-web
-    ports:
-      - "80:80" # Maps container port 80 to host port 80 (http://localhost)
-    depends_on:
-      - server
-    
-volumes:
-  mongo_data:
+      # Put your key in a .env file next to this compose file (compose reads it automatically).
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_BASE_URL: ${GEMINI_BASE_URL:-https://generativelanguage.googleapis.com/v1beta/openai}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.6-flash}
+      GEMINI_FALLBACK_MODEL: ${GEMINI_FALLBACK_MODEL:-gemini-3.5-flash-lite}
+      ASANAS_PATH: /app/backend/asanas.json
+      PUBLIC_DIR: /app/public
+    restart: unless-stopped

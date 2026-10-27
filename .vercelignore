@@ -1,0 +1,8 @@
+legacy/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+backend/.env
+node_modules/

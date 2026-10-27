@@ -1,0 +1,10 @@
+legacy/
+.vercel/
+.venv/
+venv/
+**/node_modules/
+**/__pycache__/
+**/*.pyc
+.git/
+.env
+backend/.env

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Asana Coach</title>
+    <meta
+      name="description"
+      content="Upload a yoga pose photo for estimated alignment feedback, grounded in an expert rubric."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div>
+        <h1>Asana Coach</h1>
+        <p class="muted">
+          Upload one photo. A vision model estimates your alignment against an expert rubric.
+        </p>
+      </div>
+      <div class="header-badges">
+        <span class="badge badge-bad">demo only · not for real users</span>
+        <span id="rubric-badge" class="badge badge-draft">loading rubric…</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h2>1. Pose photo</h2>
+        <form id="analyze-form">
+          <div class="field">
+            <label for="asana-select">Pose</label>
+            <select id="asana-select" name="asana_id">
+              <option value="auto">Let the model identify it</option>
+            </select>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="age">Age</label>
+              <input id="age" name="age" type="number" min="1" max="120" value="30" />
+            </div>
+            <div class="field">
+              <label for="flexibility">Flexibility</label>
+              <select id="flexibility" name="flexibility">
+                <option value="low">low</option>
+                <option value="medium" selected>medium</option>
+                <option value="high">high</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="goal">Goal</label>
+              <input id="goal" name="goal" type="text" value="alignment" maxlength="80" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="file">Image (JPG or PNG, max 4 MB)</label>
+            <input id="file" name="file" type="file" accept="image/jpeg,image/png" required />
+            <p class="muted hint">Large photos are resized in your browser before upload.</p>
+          </div>
+
+          <div class="field">
+            <label for="notes">Anything the model should know? <span class="muted">(optional)</span></label>
+            <textarea id="notes" name="notes" rows="2" maxlength="400"
+              placeholder="e.g. injured left knee, using a block, camera at chest height"></textarea>
+          </div>
+
+          <button id="submit-button" type="submit">Analyse pose</button>
+          <p id="status" class="status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section id="result-card" class="card" hidden>
+        <div id="result"></div>
+      </section>
+
+      <section class="card">
+        <h2>2. Ask about this pose</h2>
+        <p class="muted" id="chat-hint">
+          Benefits, precautions, alignment cues, what to fix next. Upload a photo first for
+          pose-specific answers.
+        </p>
+        <div id="chat-log" class="chat-log" aria-live="polite"></div>
+        <form id="chat-form" class="chat-form">
+          <textarea
+            id="chat-input"
+            rows="2"
+            maxlength="2000"
+            placeholder="e.g. What are the benefits of this pose, and how long should I hold it?"
+          ></textarea>
+          <button id="chat-button" type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p class="muted">
+        Angle values are <strong>estimates</strong> from a vision model, not measurements. The rubric
+        ranges are placeholders pending subject-matter-expert review. Not medical advice.
+        <strong>Demo only:</strong> the free model tier may retain uploaded photos, so do not upload
+        images of other people.
+      </p>
+    </footer>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
