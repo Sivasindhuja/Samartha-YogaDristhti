@@ -73,6 +73,9 @@ Or import the repo in the Vercel dashboard, add `GEMINI_API_KEY` under
 **Settings → Environment Variables**, and deploy. Then check
 `https://<your-app>.vercel.app/api/health` — it should report `"vision_configured": true`.
 
+Before sharing the URL, turn on **Settings → Deployment Protection → Vercel Authentication**.
+The app has no login or rate limiting, so anyone with the link can spend your Gemini quota.
+
 How the pieces fit on Vercel:
 
 | Piece | Behaviour |
@@ -80,7 +83,7 @@ How the pieces fit on Vercel:
 | `app.py` | Vercel looks for a `FastAPI` instance named `app` here. It adds `backend/` to `sys.path` and re-exports `backend.main:app`. |
 | `public/` | Served from the CDN at `/`. FastAPI does **not** mount it when `VERCEL` is set. |
 | `/api/*` | Reaches the single serverless function. |
-| `vercel.json` | `maxDuration: 60`, bundles `backend/asanas.json`, excludes `legacy/` and `node_modules` from the bundle. |
+| `vercel.json` | `maxDuration: 60`, bundles `backend/**`, excludes `legacy/` and `node_modules` from the bundle, and sends `X-Robots-Tag: noindex`. |
 | `.python-version` | Pins Python 3.12. |
 | `.vercelignore` | Keeps `legacy/` (including its old `node_modules`) out of the upload. |
 

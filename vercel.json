@@ -4,8 +4,14 @@
   "functions": {
     "app.py": {
       "maxDuration": 60,
-      "includeFiles": "backend/asanas.json",
+      "includeFiles": "backend/**",
       "excludeFiles": "{legacy/**,**/node_modules/**,**/__pycache__/**,**/*.pyc}"
     }
-  }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    }
+  ]
 }
